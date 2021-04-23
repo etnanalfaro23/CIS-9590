@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stock Sense!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+
+  <body>
+
+    <div id="nav">
+      <a class="toplink">Top Stocks</a>
+      <a class="toplink">Images</a>
+    </div>
+    <p> {{val}} </p>
+    <div id="middle">
+      <div id="logo">
+      </div>
+      <div id="searchbarcontainer">
+        <input id='searchbar' type="text" name="" value="">
+      </div>
+      <div id="buttons">
+        <div class="button">Stock Search</div>
+        <div class="button">I Am Feeling Lucky</div>
+      </div>
+      <div id="links">
+        Stock Sense is Offered in <a href="https://www.nasdaq.com/"target="_blank">X</a>  <a href="https://www.dowjones.com/", target="_blank">Y</a>
+
+      </div>
+
+      <div id="footer">
+
+      </div>
+
+
+    </div>
+
+  </body>
+
+</html>
