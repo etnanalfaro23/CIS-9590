@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stock Sense!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+
+  <body>
+
+    <div id="nav">
+      <a class="toplink">Top Stocks</a>
+      <a class="toplink">Images</a>
+    </div>
+
+    <div id="middle">
+      <div id="logo">
+        <img src="static\Project Logo.PNG" alt="Stock Sense">
+      </div>
+      <div id="searchbarcontainer">
+        <form action="/etnan" method="post">
+        <input id='searchbar' type="text" name="searchval" value="">
+        <div id="buttons">
+        <input type="submit" value="Stock Search" class="button">
+        <div class="button">I Am Feeling Lucky</div>
+      </div>
+    </form></div>
+      <div id="links">
+        Stock Sense is Offered in <a href="https://www.nasdaq.com/"target="_blank">X</a>  <a href="https://www.dowjones.com/", target="_blank">Y</a>
+
+      </div>
+
+      <div id="footer">
+
+      </div>
+
+
+    </div>
+
+  </body>
+
+</html>

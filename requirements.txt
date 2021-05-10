@@ -1,0 +1,9 @@
+flask
+tweepy
+yfinance
+pandas
+wordcloud
+matplotlib
+numpy
+nltk
+sklearn==0.22.1
