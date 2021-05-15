@@ -6,4 +6,8 @@ wordcloud
 matplotlib
 numpy
 nltk
-sklearn==0.22.1
+sklearn
+Flask-WTF==0.14.3
+openpyxl==3.0.7
+WTForms==2.3.3
+xlrd==2.0.1
