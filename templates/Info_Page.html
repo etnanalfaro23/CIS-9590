@@ -11,6 +11,7 @@
   <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-tag-cloud.min.js"></script>
   <!-- <link rel="stylesheet" href="Info_Page.css"> -->
   <h1>Stock Info {{val}}</h1>
+  <h1>We're the best!</h1>
 </head>
 
 <body>
@@ -22,38 +23,38 @@
     <div class="stock_data">
       <h1>Financials</h1>
       <p>{{financedata}}</p>
-      
+
 
     </div>
 
     <div class="stock_graph">
       <h1>Graph</h1>
       <canvas id="chart" max-width="4" !important max-height="3" !important style="border:1px solid"></canvas>
-      <script>  
-      new Chart(document.getElementById("chart"), 
+      <script>
+      new Chart(document.getElementById("chart"),
         {
           type: 'line',
-          data: 
+          data:
           {
             labels :{{timestamps|safe}},
-            datasets: 
+            datasets:
             [
               {
-              data : {{data|safe}}, 
+              data : {{data|safe}},
               label : '{{val|safe}}',
               borderColor: "#3e95cd",
               fill: true
               }
             ]
           },
-          options: 
+          options:
           {
-            title: 
+            title:
             {
               display: true,
               text: 'Stock Prices over the past 1 day'
             },
-            hover: 
+            hover:
             {
             mode: 'index',
             intersect: true
@@ -64,12 +65,12 @@
 
     </div>
 
-    
+
     <div class="sentiment_analysis">
       <h1>Public sentiment</h1>
       <p>Negative : {{neg_percentage}}</p>
       <p>Positive : {{pos_percentage}}</p>
-     
+
 
 
     </div>
@@ -86,8 +87,8 @@
 
         // initiate drawing the chart
         chart.draw();
-        
-        
+
+
       </script>
 
     </div>
