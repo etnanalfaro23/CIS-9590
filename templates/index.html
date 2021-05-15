@@ -2,11 +2,13 @@
 <html>
   <head>
     <title>Stock Sense!</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
   </head>
 
   <body>
-
     <div id="nav">
       <a class="toplink">Top Stocks</a>
       <a class="toplink">Images</a>
@@ -14,28 +16,40 @@
 
     <div id="middle">
       <div id="logo">
-        <img src="static\Project Logo.PNG" alt="Stock Sense">
+        <img src="static\Project Logo.PNG" alt="Stock Sense" />
       </div>
       <div id="searchbarcontainer">
         <form action="/etnan" method="post">
-        <input id='searchbar' type="text" name="searchval" value="">
-        <div id="buttons">
-        <input type="submit" value="Stock Search" class="button">
-        <div class="button">I Am Feeling Lucky</div>
+          <input list="companies" id="searchbar" name="searchval" value="" />
+          <datalist id="companies">
+            <option value="{{form.name}}"></option>
+          </datalist>
+
+          <div id="buttons">
+            <input type="submit" value="Stock Search" class="button" />
+            <!-- <div class="button">I Am Feeling Lucky</div> -->
+            <button class="button" onclick="myFunction({{form.companies}})">
+              I Am Feeling Lucky
+            </button>
+          </div>
+        </form>
+
+        <script>
+          function myFunction(companies) {
+            const arrOfCompanies = Object.values(companies);
+            const randomElement =
+              arrOfCompanies[Math.floor(Math.random() * arrOfCompanies.length)];
+            document.getElementById("searchbar").value = randomElement;
+          }
+        </script>
       </div>
-    </form></div>
       <div id="links">
-        Stock Sense is Offered in <a href="https://www.nasdaq.com/"target="_blank">X</a>  <a href="https://www.dowjones.com/", target="_blank">Y</a>
-
+        Stock Sense is Offered in
+        <a href="https://www.nasdaq.com/" target="_blank">X</a>
+        <a href="https://www.dowjones.com/" , target="_blank">Y</a>
       </div>
 
-      <div id="footer">
-
-      </div>
-
-
+      <div id="footer"></div>
     </div>
-
   </body>
-
 </html>
