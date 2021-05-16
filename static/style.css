@@ -41,10 +41,11 @@ body{
   width:500px;
   border-radius: 15px;
   border: 2px solid black;
+  padding-left: 1%;
 }
 
 #searchbar:hover{
-  box-shadow: 0 0 0.5px 1px blue;
+  box-shadow: 0 0 0.5px 0.5px blue;
 }
 
 #buttons{
