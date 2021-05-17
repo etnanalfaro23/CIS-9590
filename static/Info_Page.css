@@ -16,7 +16,7 @@ body {
   margin: 0 auto;
   padding: 0 5%;
   background: #eee;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 55% 45%;
   grid-template-rows: 1fr 100fr;
   grid-gap: 1em;
 
