@@ -21,8 +21,8 @@
 
   <div class="container">
     <div class="dashboard_heading">
-        <h1>Stock Info {{val}}</h1>
-        
+      <h1>Stock Info {{val}}</h1>
+
 
 
     </div>
@@ -31,41 +31,22 @@
       <h1>News Articles</h1>
       <!-- <p>{{financedata['longBusinessSummary']}}</p>
       <p>{{headlines}}</p> -->
-      <table class="centered thick-border">
+      <table  style="margin-left:auto;margin-right:auto;">
         <!-- <tr>
                 <th>News Headlines</th>
         </tr> -->
         {% for k, v in headlines.items() %}
-                <tr>
-                        <td><a href="{{ k }}">{{ v }}</a></td>
-                </tr>
+        <tr>
+          <td><a href="{{ k }}">{{ v }}</a></td>
+        </tr>
         {% endfor %}
       </table>
-      
+
     </div>
 
-    <div class="stock_graph" style="width: 650px; height: 650px;">
+    <div class="stock_graph" style="width: 100%; height: 100%;">
       <h1>Financial Data</h1>
       <h2>Ticker Information</h2>
-      <table class="centered thick-border">
-        <tr>
-                <!-- <th>Sector</th> -->
-                <th>Previous Close&emsp;</th>
-                <th>Market Capitalization&emsp;</th>
-                <th>52 Week Low&emsp;</th>
-                <th>Profit margin&emsp;</th>
-                <!-- <th>Short Ratio</th> -->
-        </tr>
-        
-        <tr>
-                <!-- <td>{{financedata['sector']}}</td> -->
-                <td>{{financedata['previousClose']}}</td>
-                <td>{{financedata['marketCap']}}</td>
-                <td>{{financedata['fiftyTwoWeekLow']}}</td>
-                <td>{{financedata['profitMargins']}}</td>
-                <!-- <td>{{financedata['shortRatio']}}</td> -->
-        </tr>
-      </table>
       <table class="centered thick-border">
         <tr>
           <!-- <th>Sector</th> -->
@@ -75,7 +56,7 @@
           <th>Profit margin&emsp;</th>
           <!-- <th>Short Ratio</th> -->
         </tr>
-  
+
         <tr>
           <!-- <td>{{financedata['sector']}}</td> -->
           <td>{{financedata['previousClose']}}</td>
@@ -84,41 +65,33 @@
           <td>{{financedata['profitMargins']}}</td>
           <!-- <td>{{financedata['shortRatio']}}</td> -->
         </tr>
-        
+
       </table>
       <h2>
         Graph
       </h2>
 
-      <canvas id="chart" max-width="4" !important max-height="3" !important style="border:1px solid"></canvas>
+      <canvas id="chart" max-width="4" !important max-height="4" !important style="border:1px solid"></canvas>
       <script>
-      new Chart(document.getElementById("chart"),
-        {
+        new Chart(document.getElementById("chart"), {
           type: 'line',
-          data:
-          {
-            labels :{{timestamps|safe}},
-            datasets:
-            [
-              {
-              data : {{data|safe}},
-              label : '{{val|safe}}',
+          data: {
+            labels: {{timestamps | safe}},
+            datasets: [{
+              data: {{data | safe}},
+              label: '{{val|safe}}',
               borderColor: "#3e95cd",
               fill: true
-              }
-            ]
+            }]
           },
-          options:
-          {
-            title:
-            {
+          options: {
+            title: {
               display: true,
               text: 'Stock Prices over the past 1 day'
             },
-            hover:
-            {
-            mode: 'index',
-            intersect: true
+            hover: {
+              mode: 'index',
+              intersect: true
             },
           }
         });
@@ -130,24 +103,30 @@
     <div class="sentiment_analysis">
       <h1>Public sentiment</h1>
       <p>
-      
-      Positive : <svg class="thumbs_up" xmlns="http://www.w3.org/2000/svg"  width="1em" height="1em" viewBox="0 0 16 16"><path fill="#626262" d="M16 7.1C16 5.6 14.6 5 13.8 5h-2.2c.4-1 .7-2.2.5-3.1C11.6.1 10.1 0 9.6 0h-.1c-.4 0-.6.2-.8.5l-1 2.8L5 6H0v9h5v-1c.2 0 .7.3 1.2.6c1.2.6 2.9 1.5 4.5 1.5c2.4 0 3.2-.3 3.8-1.3c.3-.6.3-1.1.3-1.4c.2-.2.5-.5.6-1s.1-.8 0-1.1c.2-.3.4-.7.5-1.3c0-.5-.1-.9-.2-1.2c.1-.4.3-.9.3-1.7zM2.5 13.5c-.6 0-1-.4-1-1s.4-1 1-1s1 .4 1 1s-.4 1-1 1zm12.2-4.4s.2.2.2.7c0 .6-.4.9-.4.9l-.3.3l.2.3s.2.3 0 .7c-.1.4-.5.7-.5.7l-.3.3l.2.4s.2.4-.1.9c-.2.4-.4.7-2.9.7c-1.4 0-3-.8-4.1-1.4c-.8-.4-1.3-.6-1.7-.6V7h.1c.2 0 .4-.1.6-.2L8.5 4c.1-.1.1-.2.2-.3l1-2.7c.5 0 1.2.2 1.4 1.1c.1.6-.1 1.6-.6 2.8c-.1.3-.1.5.1.8c.1.2.4.3.7.3h2.5c.1 0 1.2.2 1.2 1.1c0 .8-.3 1.2-.3 1.2l-.3.4l.3.4z"/></svg> {{pos_percentage}}
-      <!-- </p>
+
+        Positive : <svg class="thumbs_up" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+          <path fill="#626262"
+            d="M16 7.1C16 5.6 14.6 5 13.8 5h-2.2c.4-1 .7-2.2.5-3.1C11.6.1 10.1 0 9.6 0h-.1c-.4 0-.6.2-.8.5l-1 2.8L5 6H0v9h5v-1c.2 0 .7.3 1.2.6c1.2.6 2.9 1.5 4.5 1.5c2.4 0 3.2-.3 3.8-1.3c.3-.6.3-1.1.3-1.4c.2-.2.5-.5.6-1s.1-.8 0-1.1c.2-.3.4-.7.5-1.3c0-.5-.1-.9-.2-1.2c.1-.4.3-.9.3-1.7zM2.5 13.5c-.6 0-1-.4-1-1s.4-1 1-1s1 .4 1 1s-.4 1-1 1zm12.2-4.4s.2.2.2.7c0 .6-.4.9-.4.9l-.3.3l.2.3s.2.3 0 .7c-.1.4-.5.7-.5.7l-.3.3l.2.4s.2.4-.1.9c-.2.4-.4.7-2.9.7c-1.4 0-3-.8-4.1-1.4c-.8-.4-1.3-.6-1.7-.6V7h.1c.2 0 .4-.1.6-.2L8.5 4c.1-.1.1-.2.2-.3l1-2.7c.5 0 1.2.2 1.4 1.1c.1.6-.1 1.6-.6 2.8c-.1.3-.1.5.1.8c.1.2.4.3.7.3h2.5c.1 0 1.2.2 1.2 1.1c0 .8-.3 1.2-.3 1.2l-.3.4l.3.4z" />
+        </svg> {{pos_percentage}}
+        <!-- </p>
       <p> -->
         &emsp;&emsp;&emsp;&emsp;
-        
-      Negative : <svg class="thumbs_down" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="#626262" d="M15.6 7.3c.1-.3.3-.7.2-1.2c0-.6-.3-1.1-.5-1.3c.1-.3.1-.6 0-1.1s-.4-.8-.6-1c.1-.3.1-.8-.3-1.4C14 .3 13.2 0 10.8 0C9.1 0 7.5.8 6.2 1.5c-.4.2-1 .5-1.2.5H0v9h5v-.9l2.7 2.7l1 2.8c.2.2.4.4.8.4h.1c.5 0 2-.1 2.4-1.9c.2-.9-.1-2.2-.5-3.1h2.3c.7-.1 2.1-.6 2.2-2.1c0-.7-.2-1.3-.4-1.6zm-13.1.2c.6 0 1 .4 1 1s-.4 1-1 1s-1-.4-1-1s.4-1 1-1zM13.8 10h-2.5c-.3 0-.5.1-.7.4c-.2.2-.2.5-.1.8c.5 1.2.7 2.2.6 2.8c-.2.9-.9 1.1-1.4 1.1l-1-2.7c0-.1-.1-.2-.2-.3L5.6 9.2c-.1-.1-.3-.2-.5-.2H5V3c.4 0 .8-.2 1.7-.6C7.8 1.8 9.4 1 10.8 1c2.5 0 2.7.4 2.9.7c.3.5.1.9.1.9l-.2.4l.4.3s.4.2.5.7c.1.4 0 .7 0 .7l-.3.3l.3.3s.4.3.4.9c0 .5-.2.7-.2.7l-.4.3l.4.4s.4.4.3 1.2c0 1.1-1.1 1.2-1.2 1.2z"/></svg> {{neg_percentage}}
+
+        Negative : <svg class="thumbs_down" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+          <path fill="#626262"
+            d="M15.6 7.3c.1-.3.3-.7.2-1.2c0-.6-.3-1.1-.5-1.3c.1-.3.1-.6 0-1.1s-.4-.8-.6-1c.1-.3.1-.8-.3-1.4C14 .3 13.2 0 10.8 0C9.1 0 7.5.8 6.2 1.5c-.4.2-1 .5-1.2.5H0v9h5v-.9l2.7 2.7l1 2.8c.2.2.4.4.8.4h.1c.5 0 2-.1 2.4-1.9c.2-.9-.1-2.2-.5-3.1h2.3c.7-.1 2.1-.6 2.2-2.1c0-.7-.2-1.3-.4-1.6zm-13.1.2c.6 0 1 .4 1 1s-.4 1-1 1s-1-.4-1-1s.4-1 1-1zM13.8 10h-2.5c-.3 0-.5.1-.7.4c-.2.2-.2.5-.1.8c.5 1.2.7 2.2.6 2.8c-.2.9-.9 1.1-1.4 1.1l-1-2.7c0-.1-.1-.2-.2-.3L5.6 9.2c-.1-.1-.3-.2-.5-.2H5V3c.4 0 .8-.2 1.7-.6C7.8 1.8 9.4 1 10.8 1c2.5 0 2.7.4 2.9.7c.3.5.1.9.1.9l-.2.4l.4.3s.4.2.5.7c.1.4 0 .7 0 .7l-.3.3l.3.3s.4.3.4.9c0 .5-.2.7-.2.7l-.4.3l.4.4s.4.4.3 1.2c0 1.1-1.1 1.2-1.2 1.2z" />
+        </svg> {{neg_percentage}}
       </p>
 
 
 
     </div>
-    
-    <div id = "container1" class="words" style="width: 550px; height: 500px;">
-      
+
+    <div id="container1" class="words" style="width: 550px; height: 380px;">
+
       <h1>The Word On The Net</h1>
       <script>
-        var data =  {{wordfrequency|safe}}
+        var data = {{wordfrequency | safe}}
 
         // create a chart and set the data
         chart = anychart.tagCloud(data);
@@ -157,15 +136,13 @@
 
         // initiate drawing the chart
         chart.draw();
-
-
       </script>
 
     </div>
-    
+
 
   </div>
-    
+
 </body>
 
 </html>
