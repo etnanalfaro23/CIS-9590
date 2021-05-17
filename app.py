@@ -21,13 +21,14 @@ def etnan():
 
     print(stock_name)
     data = getTweets(val, stock_name)
-    print(len(data))
+    #print(len(data))
     countvect, model = loadmodels()
-    headlines = getNews(val, stock_name)
-    print(headlines)
+    headlines= getNews(val, stock_name)
+    #print(headlines)
     financedata, graphdata, timestamps = getFinanaceInfo(val)
     pos_percentage, neg_percentage = processSentiment(data, countvect, model)
     wordfrequency = processwordcloud(data,val)
+    #newsfrequency = processwordcloud(news_text,val)
     return render_template('Info_page.html', financedata = financedata,
                     pos_percentage = pos_percentage,
                     neg_percentage = neg_percentage,
@@ -36,6 +37,8 @@ def etnan():
                     data = graphdata,
                     wordfrequency = wordfrequency,
                     headlines = headlines
+                    #newsfrequency =newsfrequency
+
                      )
 
 df = pd.read_excel("dataset.xlsx")

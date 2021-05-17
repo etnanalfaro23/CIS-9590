@@ -15,9 +15,9 @@
 
 <body>
 
-  <div class="searchbarcontainer">
+  <!-- <div class="searchbarcontainer">
     <input id='searchbar'type="text" name="" value="" placeholder="Search...">
-  </div>
+  </div> -->
 
   <div class="container">
     <div class="dashboard_heading">
@@ -32,9 +32,9 @@
       <!-- <p>{{financedata['longBusinessSummary']}}</p>
       <p>{{headlines}}</p> -->
       <table class="centered thick-border">
-        <tr>
+        <!-- <tr>
                 <th>News Headlines</th>
-        </tr>
+        </tr> -->
         {% for k, v in headlines.items() %}
                 <tr>
                         <td><a href="{{ k }}">{{ v }}</a></td>
@@ -64,6 +64,25 @@
                 <td>{{financedata['fiftyTwoWeekLow']}}</td>
                 <td>{{financedata['profitMargins']}}</td>
                 <!-- <td>{{financedata['shortRatio']}}</td> -->
+        </tr>
+      </table>
+      <table class="centered thick-border">
+        <tr>
+          <!-- <th>Sector</th> -->
+          <th>Previous Close&emsp;</th>
+          <th>Market Capitalization&emsp;</th>
+          <th>52 Week Low&emsp;</th>
+          <th>Profit margin&emsp;</th>
+          <!-- <th>Short Ratio</th> -->
+        </tr>
+  
+        <tr>
+          <!-- <td>{{financedata['sector']}}</td> -->
+          <td>{{financedata['previousClose']}}</td>
+          <td>{{financedata['marketCap']}}</td>
+          <td>{{financedata['fiftyTwoWeekLow']}}</td>
+          <td>{{financedata['profitMargins']}}</td>
+          <!-- <td>{{financedata['shortRatio']}}</td> -->
         </tr>
         
       </table>
@@ -123,7 +142,9 @@
 
 
     </div>
+    
     <div id = "container1" class="words" style="width: 550px; height: 500px;">
+      
       <h1>The Word On The Net</h1>
       <script>
         var data =  {{wordfrequency|safe}}
@@ -141,8 +162,10 @@
       </script>
 
     </div>
+    
 
   </div>
+    
 </body>
 
 </html>

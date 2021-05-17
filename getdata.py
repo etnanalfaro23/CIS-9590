@@ -40,10 +40,17 @@ def getFinanaceInfo(stockname):
     B = A.info
 
     if 'sector' in B.keys():
-        B = {'longBusinessSummary': B['longBusinessSummary'],'sector': B['sector'],'previousClose': B['previousClose'],'marketCap': B['marketCap'],
-    'fiftyTwoWeekLow': B['fiftyTwoWeekLow'], 'profitMargins': B['profitMargins'], 'symbol': B['symbol'],
-    'sharesShort': B['sharesShort'], 'priceToBook': B['priceToBook'], 'shortRatio': B['shortRatio'], 
-    'lastSplitFactor': B['lastSplitFactor']}
+        B = {'longBusinessSummary': B['longBusinessSummary'],
+        'sector': B['sector'],
+        'previousClose': B['previousClose'],
+        'marketCap': B['marketCap'],
+        'fiftyTwoWeekLow': B['fiftyTwoWeekLow'],
+        'profitMargins': B['profitMargins'],
+        'symbol': B['symbol'],
+        'sharesShort': B['sharesShort'], 
+        'priceToBook': B['priceToBook'], 
+        'shortRatio': B['shortRatio'], 
+        'lastSplitFactor': B['lastSplitFactor']}
     else:
         B = {'previousClose': B['previousClose'],'marketCap': B['marketCap'],
     'fiftyTwoWeekLow': B['fiftyTwoWeekLow'], 'profitMargins': B['profitMargins'], 'symbol': B['symbol'],
@@ -80,13 +87,15 @@ def getNews(stockticker, stockname):
     # title = []
     # url = []
     info = {}
+    news_text = []
     for result in articles:
         # title.append(result['title'])
         # url.append(result['url'])
         #print(result['content'])
         info[result['url']] = result['title']
+        #news_text.append(result['content'])
 
-    print(response.json())
+    # print(response.json())
 
 
 
