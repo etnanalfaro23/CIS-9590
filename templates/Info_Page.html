@@ -22,12 +22,15 @@
   <div class="container">
     <div class="dashboard_heading">
         <h1>Stock Info {{val}}</h1>
+        
+
+
     </div>
 
     <div class="stock_data">
-      <h1>Financials</h1>
-      <!-- <p>{{financedata['longBusinessSummary']}}</p> -->
-      <!-- <p>{{headlines}}</p> -->
+      <h1>News Articles</h1>
+      <!-- <p>{{financedata['longBusinessSummary']}}</p>
+      <p>{{headlines}}</p> -->
       <table class="centered thick-border">
         <tr>
                 <th>News Headlines</th>
@@ -37,11 +40,37 @@
                         <td><a href="{{ k }}">{{ v }}</a></td>
                 </tr>
         {% endfor %}
-</table>
+      </table>
+      
     </div>
 
     <div class="stock_graph" style="width: 650px; height: 650px;">
-      <h1>Graph</h1>
+      <h1>Financial Data</h1>
+      <h2>Ticker Information</h2>
+      <table class="centered thick-border">
+        <tr>
+                <!-- <th>Sector</th> -->
+                <th>Previous Close&emsp;</th>
+                <th>Market Capitalization&emsp;</th>
+                <th>52 Week Low&emsp;</th>
+                <th>Profit margin&emsp;</th>
+                <!-- <th>Short Ratio</th> -->
+        </tr>
+        
+        <tr>
+                <!-- <td>{{financedata['sector']}}</td> -->
+                <td>{{financedata['previousClose']}}</td>
+                <td>{{financedata['marketCap']}}</td>
+                <td>{{financedata['fiftyTwoWeekLow']}}</td>
+                <td>{{financedata['profitMargins']}}</td>
+                <!-- <td>{{financedata['shortRatio']}}</td> -->
+        </tr>
+        
+      </table>
+      <h2>
+        Graph
+      </h2>
+
       <canvas id="chart" max-width="4" !important max-height="3" !important style="border:1px solid"></canvas>
       <script>
       new Chart(document.getElementById("chart"),

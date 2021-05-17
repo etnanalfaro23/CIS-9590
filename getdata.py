@@ -70,7 +70,9 @@ def getFinanaceInfo(stockname):
     return B, data_list, data_idx_list
 
 def getNews(stockticker, stockname):
-    url = (f'https://newsapi.org/v2/top-headlines?q={stockname}&apiKey=c9b6e4855af84dbcbe68b5d144143f6e')
+    print(stockticker, stockname)
+    url = (f'https://newsapi.org/v2/everything?q={stockname}+{stockticker}&apiKey=c9b6e4855af84dbcbe68b5d144143f6e&language=en&sortBy=publishedAt')
+    
 
     response = requests.get(url)
     response1 = response.json()
@@ -83,6 +85,8 @@ def getNews(stockticker, stockname):
         # url.append(result['url'])
         #print(result['content'])
         info[result['url']] = result['title']
+
+    print(response.json())
 
 
 

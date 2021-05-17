@@ -34,7 +34,7 @@ def processwordcloud(textdata,val):
 
     unique_words2 = [t for t in unique_words if t not in ['atuser','url'] and t not in [val]]
     unique_words2 = [t for t in unique_words2 if t not in STOPWORDS]
-    print('from wordcloud', val, len(unique_words2))
+    #print('from wordcloud', val, len(unique_words2))
 
     # Get word counts for each word
     word = []
