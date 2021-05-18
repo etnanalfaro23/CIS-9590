@@ -9,14 +9,15 @@ from helpers import preprocess2
 import requests
 
 
-API_KEY='c9b6e4855af84dbcbe68b5d144143f6e'
+API_KEY='NEWSAPI_KEY'
 
-consumer_key = 'VnpVUn3nwoecupySj6LuhZW1I'
-consumer_secret = 'APBWUHCfP1OziQmDw7YpS17As8yJJerFuns9QlDxSD1WvEAXuF'
+consumer_key = 'TWITTER_CONSUMER_KEY'
+consumer_secret = 'CONSUMER_SECRET_KEY'
 
-access_token = '1304641763970355200-JHeprPra1EXC8LoZVE5xUaCSALHbNK'
-access_token_secret = 'Df4E8PwDPcbx97MM1SJW0r9H1HROEXWgdEOzLDtFlXm6Y'
+access_token = 'TWITTERACCESSTOKEN'
+access_token_secret = 'ACCESSTOKENSECRET'
 
+# Author  Immanuel Augustine
 def getTweets(stockticker, stockname):
     print('Getting tweets')
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
@@ -26,7 +27,7 @@ def getTweets(stockticker, stockname):
 
     tweets = tweepy.Cursor(api.search,
                        q=f'#{stockticker} OR #{stockname} -filter:retweets',
-                       lang="en").items(200)
+                       lang="en").items(500)
     
     tweets = [t.text for t in tweets]
     clean_text = preprocess2(tweets)
@@ -34,6 +35,7 @@ def getTweets(stockticker, stockname):
     
     return clean_text
 
+# Author James Lee, Immanuel Augustine
 def getFinanaceInfo(stockname):
     A = yf.Ticker(stockname)
     
@@ -76,6 +78,7 @@ def getFinanaceInfo(stockname):
 
     return B, data_list, data_idx_list
 
+# Author James Lee, Immanuel Augustine
 def getNews(stockticker, stockname):
     print(stockticker, stockname)
     url = (f'https://newsapi.org/v2/everything?q={stockname}+{stockticker}&apiKey=c9b6e4855af84dbcbe68b5d144143f6e&language=en&sortBy=publishedAt')
@@ -84,19 +87,7 @@ def getNews(stockticker, stockname):
     response = requests.get(url)
     response1 = response.json()
     articles = response1['articles']
-    # title = []
-    # url = []
     info = {}
-    news_text = []
     for result in articles:
-        # title.append(result['title'])
-        # url.append(result['url'])
-        #print(result['content'])
-        info[result['url']] = result['title']
-        #news_text.append(result['content'])
-
-    # print(response.json())
-
-
-
+        info[result['url']] = result['title']    
     return info

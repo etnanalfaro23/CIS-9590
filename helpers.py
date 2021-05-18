@@ -3,7 +3,7 @@ import string
 from nltk.stem.porter import PorterStemmer
 import pickle
 
-
+# Author Immanuel Augustine
 
 # REFERENCE : https://gist.github.com/slowkow/7a7f61f495e3dbb7e3d767f97bd7304b
 def remove_emoji(text):
